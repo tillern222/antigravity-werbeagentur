@@ -49,6 +49,14 @@
   /* Vertical testimonial scroll */
   .scroll-col-inner { display: flex; flex-direction: column; gap: 1.5rem; animation: scrollUp var(--dur, 20s) linear infinite; }
   @keyframes scrollUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+
+  /* ShuffleGrid */
+  .shuffle-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; aspect-ratio: 1/1; max-width: 520px; }
+  @media (min-width: 1024px) { .shuffle-grid { gap: 0.75rem; } }
+  .shuffle-cell { border-radius: 0.875rem; overflow: hidden; transition: opacity 0.35s ease, transform 0.35s ease; }
+  .shuffle-cell img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .shuffle-cell:hover img { transform: scale(1.07); }
+  .shuffle-cell.fading { opacity: 0; transform: scale(0.88); }
 </style>
 </head>
 <body class="bg-surface font-plus-jakarta text-on-surface antialiased overflow-x-hidden">
@@ -97,6 +105,102 @@
       </p>
     </div>
   </section>
+
+  <!-- ShuffleGrid Section -->
+  <section class="py-24 px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+
+      <!-- Left: Text -->
+      <div class="flex-shrink-0 lg:w-[400px]">
+        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Wie wir arbeiten</span>
+        <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-on-surface leading-tight mb-6">
+          Kreativität,<br/>die man sieht.
+        </h2>
+        <p class="text-on-surface-variant leading-relaxed text-lg mb-8">
+          Jedes Projekt beginnt mit einer starken Idee – und endet mit Ergebnissen, die messbar sind. Wir lieben visuelle Kommunikation, und das zeigt sich in jedem Detail.
+        </p>
+        <a href="projekt-starten.html" class="inline-flex items-center gap-2 bg-primary-container text-on-primary-fixed font-bold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-primary-container/30 transition-all border border-primary/10">
+          Projekt starten
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Right: Shuffle grid -->
+      <div class="flex-1 min-w-0 flex justify-center lg:justify-end">
+        <div id="shuffle-grid" class="shuffle-grid w-full"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var imgs = [
+      'https://images.unsplash.com/photo-1558403194-611308249627?w=220&q=75',
+      'https://images.unsplash.com/photo-1542744094-24638eff58bb?w=220&q=75',
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=220&q=75',
+      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=220&q=75',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=220&q=75',
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=220&q=75',
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=220&q=75',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=220&q=75',
+      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=220&q=75',
+      'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=220&q=75',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=220&q=75',
+      'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=220&q=75',
+      'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=220&q=75',
+      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=220&q=75',
+      'https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=220&q=75',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=220&q=75',
+    ];
+
+    var grid = document.getElementById('shuffle-grid');
+    var cells = [];
+
+    // Build cells once
+    imgs.forEach(function (src) {
+      var cell = document.createElement('div');
+      cell.className = 'shuffle-cell';
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      img.loading = 'lazy';
+      cell.appendChild(img);
+      grid.appendChild(cell);
+      cells.push(cell);
+    });
+
+    // Pick N unique random indices
+    function randomIndices(count, max) {
+      var set = [];
+      while (set.length < count) {
+        var n = Math.floor(Math.random() * max);
+        if (set.indexOf(n) === -1) set.push(n);
+      }
+      return set;
+    }
+
+    // Shuffle subset: pick 5 cells, fade out, swap images, fade in
+    setInterval(function () {
+      var toSwap = randomIndices(5, 16);
+
+      // Collect current src values of those cells
+      var srcs = toSwap.map(function (i) { return cells[i].querySelector('img').src; });
+
+      // Fade them out
+      toSwap.forEach(function (i) { cells[i].classList.add('fading'); });
+
+      setTimeout(function () {
+        // Rotate the src values among chosen cells
+        var rotated = srcs.slice(1).concat(srcs[0]);
+        toSwap.forEach(function (i, idx) {
+          cells[i].querySelector('img').src = rotated[idx];
+          cells[i].classList.remove('fading');
+        });
+      }, 370);
+    }, 2800);
+  })();
+  </script>
 
   <!-- Intro Section -->
   <section class="py-24 px-8 max-w-5xl mx-auto text-center">
