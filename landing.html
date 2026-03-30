@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antigravity – Werbeagentur</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary-container": "#507878",
+          "tertiary": "#3d6565",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#484831",
+          "primary": "#626200",
+          "on-surface": "#1c1c0f",
+          "inverse-primary": "#cdcd00",
+          "on-primary-container": "#757500",
+          "on-error-container": "#93000a",
+          "secondary-fixed": "#e8e87c",
+          "outline-variant": "#cac8aa",
+          "on-secondary-fixed-variant": "#494900",
+          "background": "#fdfae4",
+          "surface-container": "#f2efd9",
+          "on-secondary-container": "#666600",
+          "on-primary-fixed-variant": "#494900",
+          "surface": "#fdfae4",
+          "primary-fixed-dim": "#cdcd00",
+          "error": "#ba1a1a",
+          "on-tertiary-fixed-variant": "#244d4e",
+          "surface-tint": "#626200",
+          "secondary": "#626200",
+          "on-tertiary-fixed": "#002020",
+          "surface-container-high": "#ece9d3",
+          "primary-container": "#ffff00",
+          "on-secondary-fixed": "#1d1d00",
+          "surface-variant": "#e6e3ce",
+          "tertiary-container": "#d4ffff",
+          "surface-container-low": "#f7f4df",
+          "on-primary": "#ffffff",
+          "surface-dim": "#dedbc6",
+          "on-primary-fixed": "#1d1d00",
+          "tertiary-fixed": "#c0eaeb",
+          "surface-container-lowest": "#ffffff",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed-dim": "#a4cece",
+          "primary-fixed": "#eaea00",
+          "outline": "#79785f",
+          "on-error": "#ffffff",
+          "surface-bright": "#fdfae4",
+          "error-container": "#ffdad6",
+          "secondary-container": "#e6e579",
+          "surface-container-highest": "#e6e3ce",
+          "inverse-surface": "#323123",
+          "secondary-fixed-dim": "#cccc63",
+          "on-background": "#1c1c0f",
+          "inverse-on-surface": "#f5f1dc"
+        },
+        fontFamily: {
+          "plus-jakarta": ["Plus Jakarta Sans", "sans-serif"],
+          "headline": ["Plus Jakarta Sans"],
+          "body": ["Plus Jakarta Sans"],
+          "label": ["Plus Jakarta Sans"]
+        },
+        borderRadius: { "DEFAULT": "1.5rem", "lg": "2.5rem", "xl": "3.5rem", "full": "9999px" },
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .text-shadow-soft {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  /* Marquee */
+  .marquee-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 32s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body class="bg-surface font-plus-jakarta text-on-surface antialiased overflow-x-hidden">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-8 py-4 max-w-full bg-surface/60 backdrop-blur-2xl z-50 border-b border-on-surface/5">
+  <div class="flex items-center gap-4">
+    <button class="material-symbols-outlined text-on-surface text-2xl hover:bg-surface-container-high p-2 rounded-full transition-all">menu_open</button>
+  </div>
+  <a href="landing.html" class="text-xl font-extrabold tracking-tight text-on-surface flex items-center gap-2 no-underline">
+    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+    Antigravity
+  </a>
+  <div class="flex items-center gap-8">
+    <div class="hidden lg:flex gap-8 font-semibold text-sm">
+      <a class="text-on-surface/80 hover:text-primary transition-colors" href="leistungen.html">Leistungen</a>
+      <a class="text-on-surface/80 hover:text-primary transition-colors" href="cases.html">Cases</a>
+      <a class="text-on-surface/80 hover:text-primary transition-colors" href="ueber-uns.html">Über uns</a>
+    </div>
+    <a href="projekt-starten.html" class="bg-primary-container text-on-primary-fixed font-bold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-primary-container/20 transition-all border border-primary/10">
+      Projekt starten
+    </a>
+  </div>
+</nav>
+
+<main class="pt-20">
+
+  <!-- Hero Section -->
+  <section class="relative h-[870px] mx-4 lg:mx-6 rounded-3xl overflow-hidden group">
+    <div class="absolute inset-0 bg-gradient-to-r from-on-surface/70 via-on-surface/20 to-transparent z-10"></div>
+    <img
+      alt="Kreatives Arbeiten in einer modernen Werbeagentur"
+      class="w-full h-full object-cover"
+      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80"
+    />
+    <div class="absolute inset-0 z-20 flex flex-col justify-center p-8 lg:p-24 max-w-4xl">
+      <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-xl px-5 py-2.5 rounded-full mb-8 self-start border border-white/30">
+        <span class="material-symbols-outlined text-white text-base" style="font-variation-settings: 'FILL' 1;">verified</span>
+        <span class="text-white font-semibold text-sm">Ausgezeichnete Kreativagentur seit 2015</span>
+      </div>
+      <h1 class="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 text-shadow-soft">
+        Ideen, die<br/>Marken in<br/>Bewegung setzen.
+      </h1>
+      <p class="text-lg lg:text-xl text-white/90 max-w-xl mb-10 leading-relaxed font-medium">
+        Wir entwickeln Kampagnen, die nicht nur auffallen – sondern nachhaltig wirken. Strategie, Design und Story, perfekt aufeinander abgestimmt.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="projekt-starten.html" class="bg-primary-container text-on-primary-fixed text-lg font-bold px-10 py-4 rounded-full flex items-center gap-3 hover:scale-105 transition-all shadow-lg shadow-on-surface/20">
+          Kostenlos beraten lassen
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+        <a href="cases.html" class="bg-white/20 backdrop-blur-xl text-white text-lg font-bold px-10 py-4 rounded-full flex items-center gap-3 hover:bg-white/30 transition-all border border-white/30">
+          Cases ansehen
+          <span class="material-symbols-outlined">play_circle</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-24 px-8 max-w-5xl mx-auto text-center">
+    <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Was uns antreibt</span>
+    <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-on-surface leading-tight">
+      Kreativität mit Strategie –<br class="hidden lg:block"/> für Marken, die etwas zu sagen haben.
+    </h2>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="px-8 pb-16 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Large Image Card -->
+      <div class="lg:col-span-7 h-[600px] rounded-3xl overflow-hidden relative group">
+        <img
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+          alt="Branding und Kampagnen Showcase"
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-10">
+          <span class="text-primary-container font-bold text-sm mb-2">AUSGEWÄHLTER CASE</span>
+          <h3 class="text-3xl font-bold text-white mb-4">Rebranding für marktführende B2B-Marke</h3>
+          <p class="text-white/80 max-w-md">Wie wir durch ein konsequentes Markenerlebnis die Wiedererkennbarkeit um 65 % steigerten und Leads verdreifachten.</p>
+        </div>
+      </div>
+
+      <!-- Right Cards -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+        <div class="bg-surface-container-low p-10 rounded-3xl flex-1 hover:bg-surface-container-high transition-colors border border-on-surface/5">
+          <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">brush</span>
+          </div>
+          <h4 class="text-2xl font-bold mb-4">Brand Design & Identity</h4>
+          <p class="text-on-surface-variant leading-relaxed text-lg">Von Logo bis Tonality – wir entwickeln Markenidentitäten, die in jeder Situation konsistent und unverwechselbar wirken.</p>
+        </div>
+        <div class="bg-on-surface text-surface p-10 rounded-3xl flex-1 hover:shadow-2xl transition-all">
+          <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">campaign</span>
+          </div>
+          <h4 class="text-2xl font-bold mb-4">Integrierte Kampagnen</h4>
+          <p class="text-surface/70 leading-relaxed text-lg">Online, Out-of-Home, Social, Print – wir denken Kampagnen kanalübergreifend und sorgen für maximale Reichweite und Wirkung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="px-8 pb-24 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-surface-container-lowest p-12 rounded-3xl text-center border border-on-surface/5 flex flex-col items-center">
+        <span class="text-6xl font-extrabold text-primary tracking-tighter">150+</span>
+        <span class="text-base font-bold text-on-surface/60 mt-3 uppercase tracking-wider">Zufriedene Kunden</span>
+      </div>
+      <div class="bg-surface-container-lowest p-12 rounded-3xl text-center border border-on-surface/5 flex flex-col items-center">
+        <span class="text-6xl font-extrabold text-primary tracking-tighter">320+</span>
+        <span class="text-base font-bold text-on-surface/60 mt-3 uppercase tracking-wider">Erfolgreiche Kampagnen</span>
+      </div>
+      <div class="bg-primary-container p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between group h-full min-h-[300px] shadow-2xl shadow-primary/10">
+        <img
+          class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-700"
+          alt="Kreatives Studio"
+          src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+        />
+        <div class="relative z-10">
+          <h4 class="text-3xl font-extrabold text-on-primary-fixed leading-tight">Strategisch. Kreativ. Wirksam.</h4>
+          <p class="text-on-primary-fixed/80 font-bold mt-4 uppercase text-sm tracking-widest">Vollservice aus einer Hand</p>
+        </div>
+        <div class="relative z-10 flex justify-between items-end">
+          <p class="text-on-primary-fixed font-medium max-w-[200px] text-sm italic">"Deine Marke verdient mehr als Durchschnitt."</p>
+          <span class="material-symbols-outlined text-5xl text-on-primary-fixed">emoji_objects</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="px-8 pb-24 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Unsere Leistungen</span>
+      <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-on-surface">Alles, was deine Marke braucht.</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-surface-container-low p-8 rounded-3xl border border-on-surface/5 hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-primary text-4xl mb-5 block" style="font-variation-settings: 'FILL' 1;">palette</span>
+        <h4 class="text-xl font-bold mb-3">Branding & Corporate Design</h4>
+        <p class="text-on-surface-variant leading-relaxed">Markenentwicklung, Logodesign, Corporate Identity, Styleguides und Designsysteme.</p>
+      </div>
+      <div class="bg-surface-container-low p-8 rounded-3xl border border-on-surface/5 hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-primary text-4xl mb-5 block" style="font-variation-settings: 'FILL' 1;">smartphone</span>
+        <h4 class="text-xl font-bold mb-3">Digital & Social Media</h4>
+        <p class="text-on-surface-variant leading-relaxed">Social-Media-Strategie, Content Creation, Performance-Kampagnen und Community Management.</p>
+      </div>
+      <div class="bg-surface-container-low p-8 rounded-3xl border border-on-surface/5 hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-primary text-4xl mb-5 block" style="font-variation-settings: 'FILL' 1;">movie</span>
+        <h4 class="text-xl font-bold mb-3">Film & Motion Design</h4>
+        <p class="text-on-surface-variant leading-relaxed">Imagefilme, Erklärvideos, Social-Clips und animierte Markenwelten für maximale Aufmerksamkeit.</p>
+      </div>
+      <div class="bg-surface-container-low p-8 rounded-3xl border border-on-surface/5 hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-primary text-4xl mb-5 block" style="font-variation-settings: 'FILL' 1;">web</span>
+        <h4 class="text-xl font-bold mb-3">Web & UX Design</h4>
+        <p class="text-on-surface-variant leading-relaxed">Websites und Landingpages mit klarem Fokus auf Konversion, Nutzererlebnis und Markenpräsenz.</p>
+      </div>
+      <div class="bg-surface-container-low p-8 rounded-3xl border border-on-surface/5 hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-primary text-4xl mb-5 block" style="font-variation-settings: 'FILL' 1;">print</span>
+        <h4 class="text-xl font-bold mb-3">Print & Out-of-Home</h4>
+        <p class="text-on-surface-variant leading-relaxed">Plakate, Anzeigen, Messen, Verpackungen – klassische Werbung mit modernem Designanspruch.</p>
+      </div>
+      <div class="bg-on-surface p-8 rounded-3xl hover:shadow-2xl transition-all">
+        <span class="material-symbols-outlined text-primary-container text-4xl mb-5 block" style="font-variation-settings: 'FILL' 1;">psychology</span>
+        <h4 class="text-xl font-bold mb-3 text-surface">Strategie & Beratung</h4>
+        <p class="text-surface/70 leading-relaxed">Marktanalyse, Zielgruppenforschung und Kommunikationsstrategie als Fundament für jede erfolgreiche Kampagne.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="px-8 pb-24 max-w-5xl mx-auto text-center">
+    <div class="bg-surface-container-low rounded-3xl p-16 border border-on-surface/5">
+      <span class="material-symbols-outlined text-primary text-5xl mb-6 block" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+      <blockquote class="text-2xl lg:text-3xl font-bold text-on-surface leading-relaxed mb-8">
+        "Antigravity hat nicht einfach eine Kampagne gemacht – sie haben verstanden, wer wir sind. Das Ergebnis hat uns selbst überrascht."
+      </blockquote>
+      <div class="flex items-center justify-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Kundin" class="w-full h-full object-cover"/>
+        </div>
+        <div class="text-left">
+          <p class="font-bold text-on-surface">Sarah Hoffmann</p>
+          <p class="text-on-surface-variant text-sm">Head of Marketing, Lumina GmbH</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="relative w-full overflow-hidden bg-surface-container-low py-24 mb-0">
+    <!-- Decorative SVG background -->
+    <svg class="absolute right-0 bottom-0 text-outline-variant/30 pointer-events-none" fill="none" height="154" viewBox="0 0 460 154" width="460" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_team)">
+        <path d="M-87.463 458.432C-102.118 348.092 -77.3418 238.841 -15.0744 188.274C57.4129 129.408 180.708 150.071 351.748 341.128C278.246 -374.233 633.954 380.602 548.123 42.7707" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/>
+      </g>
+      <defs><clipPath id="clip0_team"><rect fill="white" height="154" width="460"/></clipPath></defs>
+    </svg>
+
+    <div class="relative z-10 mx-auto max-w-7xl">
+
+      <!-- Header -->
+      <div class="mx-auto mb-16 flex max-w-5xl flex-col items-center px-6 text-center lg:px-0">
+        <div class="mb-6 w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+        </div>
+        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Wer wir sind</span>
+        <h2 class="relative mb-4 text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight leading-tight">
+          Die Köpfe hinter Antigravity
+          <!-- Decorative scribble -->
+          <svg class="absolute -top-2 -right-8 -z-10 w-24 text-outline-variant/50" fill="currentColor" height="86" viewBox="0 0 108 86" width="108" xmlns="http://www.w3.org/2000/svg">
+            <path d="M38.8484 16.236L15 43.5793L78.2688 15L18.1218 71L93 34.1172L70.2047 65.2739" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="28"/>
+          </svg>
+        </h2>
+        <p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed">
+          Ein multidisziplinäres Team aus Strategen, Designern, Textern und Technikern – vereint durch den Anspruch, Marken wirklich voranzubringen.
+        </p>
+      </div>
+
+      <!-- Marquee -->
+      <div class="relative w-full overflow-hidden">
+        <!-- Fade edges -->
+        <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-32" style="background: linear-gradient(to right, #f7f4df, transparent);"></div>
+        <div class="pointer-events-none absolute top-0 right-0 z-10 h-full w-32" style="background: linear-gradient(to left, #f7f4df, transparent);"></div>
+
+        <div class="marquee-track">
+          <!-- Items (duplicated for seamless loop) -->
+          <!-- Original set -->
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Patrick Weber" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Patrick Weber</p>
+                <p class="text-on-surface-variant text-xs">CEO & Gründer</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Alena Müller" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Alena Müller</p>
+                <p class="text-on-surface-variant text-xs">Creative Director</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Felix Schneider" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Felix Schneider</p>
+                <p class="text-on-surface-variant text-xs">Head of Strategy</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Maria Kovacs" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Maria Kovacs</p>
+                <p class="text-on-surface-variant text-xs">Lead Designerin</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&q=80" alt="Jonas Braun" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Jonas Braun</p>
+                <p class="text-on-surface-variant text-xs">Motion Designer</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&q=80" alt="Nina Hartmann" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Nina Hartmann</p>
+                <p class="text-on-surface-variant text-xs">Brand Strategin</p>
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Patrick Weber" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Patrick Weber</p>
+                <p class="text-on-surface-variant text-xs">CEO & Gründer</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Alena Müller" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Alena Müller</p>
+                <p class="text-on-surface-variant text-xs">Creative Director</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Felix Schneider" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Felix Schneider</p>
+                <p class="text-on-surface-variant text-xs">Head of Strategy</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Maria Kovacs" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Maria Kovacs</p>
+                <p class="text-on-surface-variant text-xs">Lead Designerin</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&q=80" alt="Jonas Braun" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Jonas Braun</p>
+                <p class="text-on-surface-variant text-xs">Motion Designer</p>
+              </div>
+            </div>
+          </div>
+          <div class="group flex w-64 shrink-0 flex-col">
+            <div class="relative overflow-hidden rounded-3xl bg-surface-container" style="height:320px;">
+              <img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&q=80" alt="Nina Hartmann" class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"/>
+              <div class="absolute bottom-0 w-full rounded-b-3xl bg-surface-container-low/90 backdrop-blur-sm p-3">
+                <p class="font-bold text-on-surface text-sm">Nina Hartmann</p>
+                <p class="text-on-surface-variant text-xs">Brand Strategin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote block -->
+      <div class="mx-auto mt-20 max-w-3xl px-6 text-center lg:px-0">
+        <p class="mb-8 text-xl lg:text-2xl font-bold text-on-surface leading-relaxed">
+          "Bei Antigravity arbeiten Menschen, die wirklich brennen – für Ideen, für Marken, für das große Ganze."
+        </p>
+        <div class="flex flex-col items-center gap-3">
+          <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="Patrick Weber" class="w-full h-full object-cover"/>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-on-surface">Patrick Weber</p>
+            <p class="text-on-surface-variant text-sm">CEO & Gründer · Antigravity</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="mx-4 lg:mx-6 mb-12 rounded-3xl bg-on-surface overflow-hidden relative">
+    <div class="absolute inset-0 opacity-5">
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1600&q=80" alt="" class="w-full h-full object-cover"/>
+    </div>
+    <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between p-12 lg:p-20 gap-10">
+      <div>
+        <h2 class="text-4xl lg:text-5xl font-extrabold text-surface leading-tight mb-4">Bereit für den nächsten<br/>großen Schritt?</h2>
+        <p class="text-surface/60 text-lg max-w-lg">Lass uns gemeinsam herausfinden, wie wir deine Marke nach vorne bringen. Kostenlos, unverbindlich und ohne Buzzword-Bingo.</p>
+      </div>
+      <div class="flex flex-col gap-4 shrink-0">
+        <a href="projekt-starten.html" class="bg-primary-container text-on-primary-fixed text-lg font-bold px-10 py-4 rounded-full flex items-center gap-3 hover:scale-105 transition-all shadow-lg">
+          Jetzt Kontakt aufnehmen
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+        <a href="cases.html" class="bg-white/10 text-surface text-lg font-bold px-10 py-4 rounded-full flex items-center gap-3 hover:bg-white/20 transition-all border border-white/10 justify-center">
+          Alle Cases ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-on-surface/5 py-16">
+  <div class="w-full flex flex-col md:flex-row justify-between items-start px-12 max-w-7xl mx-auto gap-12">
+    <div class="flex flex-col gap-6 max-w-sm">
+      <div class="text-2xl font-black text-on-surface flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        Antigravity
+      </div>
+      <p class="text-on-surface-variant leading-relaxed">
+        Eine unabhängige Kreativagentur für Marken, die etwas zu sagen haben. Wir machen Kommunikation, die wirkt – ehrlich, mutig und messbar.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-12 font-medium">
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-on-surface">Leistungen</span>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="leistungen.html">Alle Leistungen</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="leistungen.html">Branding</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="leistungen.html">Digital & Social</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-on-surface">Agentur</span>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="ueber-uns.html">Über uns</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="cases.html">Cases</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="ueber-uns.html">Team</a>
+      </div>
+      <div class="flex flex-col gap-4 col-span-2 lg:col-span-1">
+        <span class="font-bold text-on-surface">Kontakt</span>
+        <a href="projekt-starten.html" class="bg-on-surface text-surface px-6 py-2 rounded-full text-sm font-bold text-center block">Projekt anfragen</a>
+      </div>
+    </div>
+  </div>
+  <div class="mt-16 pt-8 border-t border-on-surface/5 px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant">
+    <div>© 2025 Antigravity Werbeagentur. Alle Rechte vorbehalten.</div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary" href="#">Impressum</a>
+      <a class="hover:text-primary" href="#">Datenschutz</a>
+      <a class="hover:text-primary" href="#">AGB</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

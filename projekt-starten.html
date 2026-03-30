@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projekt starten – Antigravity</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary-container": "#507878","tertiary": "#3d6565","on-secondary": "#ffffff",
+          "on-surface-variant": "#484831","primary": "#626200","on-surface": "#1c1c0f",
+          "inverse-primary": "#cdcd00","on-primary-container": "#757500","on-error-container": "#93000a",
+          "secondary-fixed": "#e8e87c","outline-variant": "#cac8aa","on-secondary-fixed-variant": "#494900",
+          "background": "#fdfae4","surface-container": "#f2efd9","on-secondary-container": "#666600",
+          "on-primary-fixed-variant": "#494900","surface": "#fdfae4","primary-fixed-dim": "#cdcd00",
+          "error": "#ba1a1a","on-tertiary-fixed-variant": "#244d4e","surface-tint": "#626200",
+          "secondary": "#626200","on-tertiary-fixed": "#002020","surface-container-high": "#ece9d3",
+          "primary-container": "#ffff00","on-secondary-fixed": "#1d1d00","surface-variant": "#e6e3ce",
+          "tertiary-container": "#d4ffff","surface-container-low": "#f7f4df","on-primary": "#ffffff",
+          "surface-dim": "#dedbc6","on-primary-fixed": "#1d1d00","tertiary-fixed": "#c0eaeb",
+          "surface-container-lowest": "#ffffff","on-tertiary": "#ffffff","tertiary-fixed-dim": "#a4cece",
+          "primary-fixed": "#eaea00","outline": "#79785f","on-error": "#ffffff","surface-bright": "#fdfae4",
+          "error-container": "#ffdad6","secondary-container": "#e6e579","surface-container-highest": "#e6e3ce",
+          "inverse-surface": "#323123","secondary-fixed-dim": "#cccc63","on-background": "#1c1c0f",
+          "inverse-on-surface": "#f5f1dc"
+        },
+        fontFamily: {
+          "plus-jakarta": ["Plus Jakarta Sans", "sans-serif"],
+          "headline": ["Plus Jakarta Sans"],"body": ["Plus Jakarta Sans"],"label": ["Plus Jakarta Sans"]
+        },
+        borderRadius: { "DEFAULT": "1.5rem", "lg": "2.5rem", "xl": "3.5rem", "full": "9999px" },
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .text-shadow-soft { text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .marquee-track { display: flex; gap: 1.5rem; width: max-content; animation: marquee 32s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</head>
+<body class="bg-surface font-plus-jakarta text-on-surface antialiased overflow-x-hidden">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-8 py-4 max-w-full bg-surface/60 backdrop-blur-2xl z-50 border-b border-on-surface/5">
+  <div class="flex items-center gap-4">
+    <button class="material-symbols-outlined text-on-surface text-2xl hover:bg-surface-container-high p-2 rounded-full transition-all">menu_open</button>
+  </div>
+  <a href="landing.html" class="text-xl font-extrabold tracking-tight text-on-surface flex items-center gap-2 no-underline">
+    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+    Antigravity
+  </a>
+  <div class="flex items-center gap-8">
+    <div class="hidden lg:flex gap-8 font-semibold text-sm">
+      <a class="text-on-surface/80 hover:text-primary transition-colors" href="leistungen.html">Leistungen</a>
+      <a class="text-on-surface/80 hover:text-primary transition-colors" href="cases.html">Cases</a>
+      <a class="text-on-surface/80 hover:text-primary transition-colors" href="ueber-uns.html">Über uns</a>
+    </div>
+    <span class="bg-primary-container text-on-primary-fixed font-bold px-6 py-2.5 rounded-full border border-primary/10 opacity-60 cursor-default select-none">
+      Projekt starten
+    </span>
+  </div>
+</nav>
+
+<main class="pt-20">
+
+  <!-- Text-Only Hero -->
+  <section class="bg-surface pt-32 pb-16 text-center max-w-4xl mx-auto px-8">
+    <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-8">
+      <span class="material-symbols-outlined text-primary" style="font-size: 2.5rem; font-variation-settings: 'FILL' 1;">rocket_launch</span>
+    </div>
+    <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Lass uns loslegen</span>
+    <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight text-on-surface leading-[1.1] mb-6">
+      Dein nächstes Projekt<br/>beginnt hier.
+    </h1>
+    <p class="text-lg text-on-surface-variant max-w-xl mx-auto leading-relaxed">
+      Füll das Formular aus – und wir melden uns innerhalb von 24 Stunden mit einem ersten Feedback.
+    </p>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="py-16 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">So läuft es ab</span>
+        <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-on-surface">Von der Anfrage zum Kickoff.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- Step 1 -->
+        <div class="flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed font-extrabold flex items-center justify-center text-sm shrink-0">01</div>
+          <h4 class="text-lg font-bold text-on-surface">Briefing ausfüllen</h4>
+          <p class="text-on-surface-variant leading-relaxed">Beschreib dein Projekt, Budget und Timeline – so gut du kannst.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed font-extrabold flex items-center justify-center text-sm shrink-0">02</div>
+          <h4 class="text-lg font-bold text-on-surface">Erstes Gespräch</h4>
+          <p class="text-on-surface-variant leading-relaxed">Wir melden uns innerhalb von 24h für ein kostenloses Erstgespräch.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed font-extrabold flex items-center justify-center text-sm shrink-0">03</div>
+          <h4 class="text-lg font-bold text-on-surface">Angebot & Konzept</h4>
+          <p class="text-on-surface-variant leading-relaxed">Du erhältst ein maßgeschneidertes Angebot inkl. strategischem Ansatz.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed font-extrabold flex items-center justify-center text-sm shrink-0">04</div>
+          <h4 class="text-lg font-bold text-on-surface">Kickoff</h4>
+          <p class="text-on-surface-variant leading-relaxed">Nach deiner Freigabe starten wir – strukturiert, transparent und effizient.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form + Info -->
+  <section class="py-24 px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+
+      <!-- Left: Contact Form -->
+      <div class="lg:col-span-3">
+        <div class="bg-surface-container-lowest border border-on-surface/5 p-10 rounded-3xl">
+          <h3 class="text-2xl font-bold text-on-surface mb-8">Erzähl uns von deinem Projekt</h3>
+          <form>
+
+            <!-- Name -->
+            <input
+              type="text"
+              placeholder="Dein Name*"
+              class="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface placeholder-on-surface/40 focus:outline-none focus:border-primary/50 transition font-medium mb-4"
+            />
+
+            <!-- Email -->
+            <input
+              type="email"
+              placeholder="Deine E-Mail-Adresse*"
+              class="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface placeholder-on-surface/40 focus:outline-none focus:border-primary/50 transition font-medium mb-4"
+            />
+
+            <!-- Company -->
+            <input
+              type="text"
+              placeholder="Unternehmen / Marke"
+              class="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface placeholder-on-surface/40 focus:outline-none focus:border-primary/50 transition font-medium mb-4"
+            />
+
+            <!-- Budget -->
+            <select class="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary/50 transition font-medium mb-4 appearance-none">
+              <option value="" disabled selected>Budget wählen...</option>
+              <option>Bis 10.000 €</option>
+              <option>10.000 – 30.000 €</option>
+              <option>30.000 – 80.000 €</option>
+              <option>80.000 € +</option>
+            </select>
+
+            <!-- Leistung -->
+            <select class="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface focus:outline-none focus:border-primary/50 transition font-medium mb-4 appearance-none">
+              <option value="" disabled selected>Welche Leistung?</option>
+              <option>Branding & Corporate Design</option>
+              <option>Digital & Social Media</option>
+              <option>Film & Motion Design</option>
+              <option>Web & UX Design</option>
+              <option>Print & Out-of-Home</option>
+              <option>Strategie & Beratung</option>
+              <option>Mehrere / Weiß noch nicht</option>
+            </select>
+
+            <!-- Message -->
+            <textarea
+              rows="5"
+              placeholder="Beschreib dein Projekt – was willst du erreichen?"
+              class="w-full bg-surface-container border border-on-surface/10 rounded-2xl px-5 py-4 text-on-surface placeholder-on-surface/40 focus:outline-none focus:border-primary/50 transition font-medium mb-6 resize-none"
+            ></textarea>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full bg-primary-container text-on-primary-fixed font-bold py-4 rounded-full text-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-lg shadow-primary/10"
+            >
+              Anfrage absenden
+              <span class="material-symbols-outlined">send</span>
+            </button>
+
+            <p class="text-on-surface-variant text-sm mt-4 text-center">* Pflichtfelder. Wir antworten innerhalb von 24 Stunden.</p>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Info Cards -->
+      <div class="lg:col-span-2 flex flex-col gap-6">
+
+        <!-- Contact Info Card -->
+        <div class="bg-surface-container-low p-8 rounded-3xl border border-on-surface/5">
+          <h4 class="font-bold text-on-surface text-lg mb-6">Direkt Kontakt aufnehmen</h4>
+
+          <div class="flex gap-3 items-start mb-4">
+            <span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">mail</span>
+            <span class="text-on-surface font-medium">hallo@antigravity-agentur.de</span>
+          </div>
+
+          <div class="flex gap-3 items-start mb-4">
+            <span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">phone</span>
+            <span class="text-on-surface font-medium">+49 30 123 456 78</span>
+          </div>
+
+          <div class="flex gap-3 items-start">
+            <span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            <span class="text-on-surface font-medium">Rosenthaler Str. 40, 10178 Berlin</span>
+          </div>
+        </div>
+
+        <!-- Response Time Card (dark) -->
+        <div class="bg-on-surface p-8 rounded-3xl">
+          <span class="material-symbols-outlined text-primary-container text-3xl mb-4 block" style="font-variation-settings: 'FILL' 1;">schedule</span>
+          <h4 class="font-bold text-surface text-lg mb-2">Schnelle Antwortzeit</h4>
+          <p class="text-surface/70 leading-relaxed mb-6">Wir lesen jede Anfrage persönlich und antworten garantiert innerhalb von 24 Stunden – auch am Wochenende.</p>
+          <p class="text-primary-container font-extrabold text-3xl mb-1">&lt; 24h</p>
+          <p class="text-surface/50 text-sm">Durchschnittliche Antwortzeit</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-on-surface/5 py-16">
+  <div class="w-full flex flex-col md:flex-row justify-between items-start px-12 max-w-7xl mx-auto gap-12">
+    <div class="flex flex-col gap-6 max-w-sm">
+      <a href="landing.html" class="text-2xl font-black text-on-surface flex items-center gap-2 no-underline">
+        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        Antigravity
+      </a>
+      <p class="text-on-surface-variant leading-relaxed">
+        Eine unabhängige Kreativagentur für Marken, die etwas zu sagen haben. Wir machen Kommunikation, die wirkt – ehrlich, mutig und messbar.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-12 font-medium">
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-on-surface">Leistungen</span>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="leistungen.html">Alle Leistungen</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="leistungen.html">Branding</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="leistungen.html">Digital & Social</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <span class="font-bold text-on-surface">Agentur</span>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="ueber-uns.html">Über uns</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="cases.html">Cases</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="ueber-uns.html">Team</a>
+      </div>
+      <div class="flex flex-col gap-4 col-span-2 lg:col-span-1">
+        <span class="font-bold text-on-surface">Kontakt</span>
+        <a href="projekt-starten.html" class="bg-on-surface text-surface px-6 py-2 rounded-full text-sm font-bold text-center block">Projekt anfragen</a>
+      </div>
+    </div>
+  </div>
+  <div class="mt-16 pt-8 border-t border-on-surface/5 px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant">
+    <div>© 2025 Antigravity Werbeagentur. Alle Rechte vorbehalten.</div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary" href="#">Impressum</a>
+      <a class="hover:text-primary" href="#">Datenschutz</a>
+      <a class="hover:text-primary" href="#">AGB</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
