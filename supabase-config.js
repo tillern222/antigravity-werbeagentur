@@ -1,0 +1,3 @@
+// Supabase Konfiguration – Antigravity Website CMS
+window.SUPABASE_URL = 'https://pqnsqidysytbfmjdghfh.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxbnNxaWR5c3l0YmZtamRnaGZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODI3NzUsImV4cCI6MjA5MDQ1ODc3NX0.lHr_D6cn7pSdXHhN6ayQTQMfjPqZOmOqzMf5vfrWuVQ';

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Antigravity CMS – Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: system-ui, -apple-system, sans-serif; }
+    .nav-btn.active { background-color: #fefce8; color: #713f12; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+
+<!-- ── AUTH SCREEN ─────────────────────────────────────── -->
+<div id="screen-auth" class="min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-md">
+    <div class="text-center mb-8">
+      <span class="material-symbols-outlined text-5xl text-yellow-500" style="font-variation-settings:'FILL' 1">bolt</span>
+      <h1 class="text-2xl font-bold mt-2">Antigravity CMS</h1>
+      <p class="text-gray-500 text-sm mt-1">Website-Inhalte verwalten</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+
+      <!-- Login -->
+      <div id="form-login">
+        <h2 class="text-lg font-semibold mb-6">Einloggen</h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">E-Mail</label>
+            <input type="email" id="login-email" placeholder="admin@example.com"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Passwort</label>
+            <input type="password" id="login-password" placeholder="••••••••"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+          </div>
+          <p id="login-error" class="text-red-500 text-sm hidden"></p>
+          <button onclick="doLogin()"
+            class="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-xl hover:bg-yellow-500 transition-colors">
+            Einloggen
+          </button>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-6">
+          Noch kein Account?
+          <button onclick="showSetup()" class="text-yellow-600 font-semibold hover:underline">Einrichten</button>
+        </p>
+      </div>
+
+      <!-- Setup (erster Admin) -->
+      <div id="form-setup" class="hidden">
+        <h2 class="text-lg font-semibold mb-2">Admin-Account einrichten</h2>
+        <p class="text-sm text-gray-500 mb-6">Erstelle deinen persönlichen Login. Benutzername und Passwort kannst du selbst festlegen.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">E-Mail</label>
+            <input type="email" id="setup-email" placeholder="deine@email.de"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Passwort (mind. 6 Zeichen)</label>
+            <input type="password" id="setup-password" placeholder="••••••••"
+              class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+          </div>
+          <p id="setup-error" class="text-red-500 text-sm hidden"></p>
+          <div id="setup-success" class="hidden bg-green-50 border border-green-200 text-green-700 text-sm p-3 rounded-xl"></div>
+          <button onclick="doSetup()"
+            class="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-xl hover:bg-yellow-500 transition-colors">
+            Account erstellen
+          </button>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-6">
+          <button onclick="showLogin()" class="text-yellow-600 font-semibold hover:underline">← Zurück zum Login</button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CMS SCREEN ──────────────────────────────────────── -->
+<div id="screen-cms" class="hidden flex flex-col" style="min-height:100vh">
+
+  <!-- Top Nav -->
+  <nav class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-yellow-500 text-2xl" style="font-variation-settings:'FILL' 1">bolt</span>
+      <span class="font-bold text-lg">Antigravity CMS</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="landing.html" target="_blank"
+        class="text-sm text-gray-500 hover:text-gray-800 flex items-center gap-1 transition-colors">
+        <span class="material-symbols-outlined text-base">open_in_new</span>
+        Website ansehen
+      </a>
+      <button onclick="doLogout()"
+        class="flex items-center gap-2 text-sm text-gray-500 hover:text-red-500 transition-colors">
+        <span class="material-symbols-outlined text-base">logout</span>
+        Logout
+      </button>
+    </div>
+  </nav>
+
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white border-r border-gray-200 p-4 flex flex-col gap-1 shrink-0">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 mb-2">Seiten</p>
+      <button onclick="loadPage('landing')" id="nav-landing"
+        class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-left hover:bg-gray-50 transition-colors w-full">
+        <span class="material-symbols-outlined text-base">home</span>
+        Startseite
+      </button>
+      <button onclick="loadPage('leistungen')" id="nav-leistungen"
+        class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-left hover:bg-gray-50 transition-colors w-full">
+        <span class="material-symbols-outlined text-base">bolt</span>
+        Leistungen
+      </button>
+      <button onclick="loadPage('ueber-uns')" id="nav-ueber-uns"
+        class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-left hover:bg-gray-50 transition-colors w-full">
+        <span class="material-symbols-outlined text-base">group</span>
+        Über uns
+      </button>
+    </aside>
+
+    <!-- Editor -->
+    <main class="flex-1 overflow-y-auto p-8">
+      <div id="editor-area" class="max-w-2xl mx-auto">
+        <p class="text-gray-400 text-sm">Wähle eine Seite aus dem Menü links.</p>
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<script>
+  var SUPABASE_URL = 'https://pqnsqidysytbfmjdghfh.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxbnNxaWR5c3l0YmZtamRnaGZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODI3NzUsImV4cCI6MjA5MDQ1ODc3NX0.lHr_D6cn7pSdXHhN6ayQTQMfjPqZOmOqzMf5vfrWuVQ';
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var PAGES = {
+    landing: {
+      label: 'Startseite',
+      link: 'landing.html',
+      fields: [
+        { key: 'landing_hero_badge',    label: 'Hero Badge Text',  type: 'text' },
+        { key: 'landing_hero_title',    label: 'Hero Titel',       type: 'textarea' },
+        { key: 'landing_hero_subtitle', label: 'Hero Untertitel',  type: 'textarea' },
+        { key: 'landing_hero_image',    label: 'Hero Bild',        type: 'image' },
+        { key: 'landing_cta_title',     label: 'CTA Überschrift',  type: 'textarea' },
+        { key: 'landing_cta_subtitle',  label: 'CTA Untertitel',   type: 'textarea' }
+      ]
+    },
+    leistungen: {
+      label: 'Leistungen',
+      link: 'leistungen.html',
+      fields: [
+        { key: 'leistungen_hero_title',    label: 'Hero Titel',       type: 'textarea' },
+        { key: 'leistungen_hero_subtitle', label: 'Hero Untertitel',  type: 'textarea' },
+        { key: 'leistungen_hero_image',    label: 'Hero Bild',        type: 'image' },
+        { key: 'leistungen_grid_title',    label: 'Grid Überschrift', type: 'text' },
+        { key: 'leistungen_grid_text',     label: 'Grid Text',        type: 'textarea' }
+      ]
+    },
+    'ueber-uns': {
+      label: 'Über uns',
+      link: 'ueber-uns.html',
+      fields: [
+        { key: 'ueberuns_hero_title',    label: 'Hero Titel',      type: 'textarea' },
+        { key: 'ueberuns_hero_subtitle', label: 'Hero Untertitel', type: 'textarea' },
+        { key: 'ueberuns_hero_image',    label: 'Hero Bild',       type: 'image' },
+        { key: 'ueberuns_mission_title', label: 'Mission Titel',   type: 'text' },
+        { key: 'ueberuns_mission_text',  label: 'Mission Text',    type: 'textarea' }
+      ]
+    }
+  };
+
+  var currentPage = null;
+
+  // Auth-Status prüfen beim Laden
+  sb.auth.getSession().then(function(r) {
+    if (r.data.session) showCMS();
+  });
+  sb.auth.onAuthStateChange(function(event, session) {
+    if (session) showCMS(); else showAuth();
+  });
+
+  function showAuth() {
+    document.getElementById('screen-auth').classList.remove('hidden');
+    document.getElementById('screen-cms').classList.add('hidden');
+  }
+  function showCMS() {
+    document.getElementById('screen-auth').classList.add('hidden');
+    document.getElementById('screen-cms').classList.remove('hidden');
+    document.getElementById('screen-cms').classList.add('flex');
+    loadPage('landing');
+  }
+  function showLogin() {
+    document.getElementById('form-login').classList.remove('hidden');
+    document.getElementById('form-setup').classList.add('hidden');
+  }
+  function showSetup() {
+    document.getElementById('form-login').classList.add('hidden');
+    document.getElementById('form-setup').classList.remove('hidden');
+  }
+
+  async function doLogin() {
+    var email = document.getElementById('login-email').value.trim();
+    var password = document.getElementById('login-password').value;
+    var errEl = document.getElementById('login-error');
+    errEl.classList.add('hidden');
+    var r = await sb.auth.signInWithPassword({ email: email, password: password });
+    if (r.error) {
+      errEl.textContent = 'Fehler: ' + r.error.message;
+      errEl.classList.remove('hidden');
+    }
+  }
+
+  async function doSetup() {
+    var email = document.getElementById('setup-email').value.trim();
+    var password = document.getElementById('setup-password').value;
+    var errEl = document.getElementById('setup-error');
+    var succEl = document.getElementById('setup-success');
+    errEl.classList.add('hidden');
+    succEl.classList.add('hidden');
+    var r = await sb.auth.signUp({ email: email, password: password });
+    if (r.error) {
+      errEl.textContent = 'Fehler: ' + r.error.message;
+      errEl.classList.remove('hidden');
+    } else {
+      succEl.innerHTML = '✓ Account erstellt! Du kannst dich jetzt <button onclick="showLogin()" class="underline font-semibold">einloggen</button>.';
+      succEl.classList.remove('hidden');
+    }
+  }
+
+  async function doLogout() {
+    await sb.auth.signOut();
+  }
+
+  async function loadPage(pageKey) {
+    currentPage = pageKey;
+    var page = PAGES[pageKey];
+
+    // Sidebar aktiv setzen
+    document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
+    var btn = document.getElementById('nav-' + pageKey);
+    if (btn) btn.classList.add('active');
+
+    var editor = document.getElementById('editor-area');
+    editor.innerHTML = '<p class="text-gray-400 text-sm animate-pulse">Lade Inhalte…</p>';
+
+    var r = await sb.from('site_content').select('*').eq('page', pageKey).order('sort_order');
+    if (r.error) {
+      editor.innerHTML = '<p class="text-red-500 text-sm">Fehler: ' + r.error.message + '</p>';
+      return;
+    }
+
+    var contentMap = {};
+    (r.data || []).forEach(function(row) { contentMap[row.content_key] = row.value; });
+
+    var html = '<div class="flex items-start justify-between mb-8 gap-4">'
+      + '<div><h2 class="text-2xl font-bold">' + page.label + '</h2>'
+      + '<p class="text-gray-500 text-sm mt-1">Texte und Bilder bearbeiten</p></div>'
+      + '<div class="flex items-center gap-3 shrink-0">'
+      + '<a href="' + page.link + '" target="_blank" class="text-sm text-gray-500 hover:text-gray-800 flex items-center gap-1 border border-gray-200 rounded-xl px-4 py-2.5 hover:bg-gray-50 transition-colors"><span class="material-symbols-outlined text-base">open_in_new</span> Vorschau</a>'
+      + '<button onclick="savePage()" class="flex items-center gap-2 bg-yellow-400 text-gray-900 font-bold px-6 py-2.5 rounded-xl hover:bg-yellow-500 transition-colors shadow-sm"><span class="material-symbols-outlined text-base">save</span> Speichern</button>'
+      + '</div></div>'
+      + '<div id="save-status" class="hidden mb-6 p-3 rounded-xl text-sm font-medium"></div>'
+      + '<div class="space-y-5">';
+
+    page.fields.forEach(function(field) {
+      var val = contentMap[field.key] || '';
+      var safeVal = val.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+      html += '<div class="bg-white rounded-2xl border border-gray-200 p-6">'
+        + '<label class="block text-sm font-semibold text-gray-700 mb-3">' + field.label + '</label>';
+
+      if (field.type === 'image') {
+        html += '<div class="flex gap-5 items-start">'
+          + '<img id="preview-' + field.key + '" src="' + (safeVal || 'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild') + '" '
+          + 'class="w-40 h-24 object-cover rounded-xl border border-gray-200 shrink-0" '
+          + 'onerror="this.src=\'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild\'"/>'
+          + '<div class="flex-1 space-y-3">'
+          + '<input type="text" id="field-' + field.key + '" value="' + safeVal + '" '
+          + 'class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400" '
+          + 'placeholder="Bild-URL" '
+          + 'oninput="document.getElementById(\'preview-' + field.key + '\').src=this.value||\'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild\'"/>'
+          + '<label class="flex items-center gap-2 cursor-pointer bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit">'
+          + '<span class="material-symbols-outlined text-base">upload</span> Bild hochladen'
+          + '<input type="file" accept="image/*" class="hidden" onchange="uploadImage(\'' + field.key + '\', this)"/>'
+          + '</label>'
+          + '<span id="upload-status-' + field.key + '" class="text-xs text-gray-400"></span>'
+          + '</div></div>';
+      } else if (field.type === 'textarea') {
+        html += '<textarea id="field-' + field.key + '" rows="3" '
+          + 'class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-y" '
+          + 'placeholder="' + field.label + '">' + safeVal + '</textarea>'
+          + '<p class="text-xs text-gray-400 mt-1">Enter = Zeilenumbruch auf der Website</p>';
+      } else {
+        html += '<input type="text" id="field-' + field.key + '" value="' + safeVal + '" '
+          + 'class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400" '
+          + 'placeholder="' + field.label + '"/>';
+      }
+
+      html += '</div>';
+    });
+
+    html += '</div>';
+    editor.innerHTML = html;
+  }
+
+  async function savePage() {
+    var page = PAGES[currentPage];
+    var statusEl = document.getElementById('save-status');
+    statusEl.className = 'mb-6 p-3 rounded-xl text-sm font-medium bg-yellow-50 text-yellow-800';
+    statusEl.textContent = 'Speichern…';
+    statusEl.classList.remove('hidden');
+
+    var upserts = page.fields.map(function(field) {
+      return {
+        content_key: field.key,
+        page: currentPage,
+        content_type: field.type,
+        label: field.label,
+        value: (document.getElementById('field-' + field.key) || {}).value || '',
+        updated_at: new Date().toISOString()
+      };
+    });
+
+    var r = await sb.from('site_content').upsert(upserts, { onConflict: 'content_key' });
+    if (r.error) {
+      statusEl.className = 'mb-6 p-3 rounded-xl text-sm font-medium bg-red-50 text-red-700';
+      statusEl.textContent = 'Fehler: ' + r.error.message;
+    } else {
+      statusEl.className = 'mb-6 p-3 rounded-xl text-sm font-medium bg-green-50 text-green-700';
+      statusEl.textContent = '✓ Gespeichert – Änderungen sind sofort auf der Website sichtbar.';
+      setTimeout(function() { statusEl.classList.add('hidden'); }, 4000);
+    }
+  }
+
+  async function uploadImage(fieldKey, input) {
+    var file = input.files[0];
+    if (!file) return;
+    var statusEl = document.getElementById('upload-status-' + fieldKey);
+    statusEl.textContent = 'Wird hochgeladen…';
+
+    var ext = file.name.split('.').pop();
+    var filename = fieldKey + '-' + Date.now() + '.' + ext;
+
+    var r = await sb.storage.from('site-images').upload(filename, file, { upsert: true });
+    if (r.error) {
+      statusEl.textContent = 'Fehler: ' + r.error.message;
+      return;
+    }
+
+    var pub = sb.storage.from('site-images').getPublicUrl(filename);
+    var url = pub.data.publicUrl;
+    document.getElementById('field-' + fieldKey).value = url;
+    document.getElementById('preview-' + fieldKey).src = url;
+    statusEl.textContent = '✓ Hochgeladen';
+    setTimeout(function() { statusEl.textContent = ''; }, 3000);
+  }
+</script>
+
+</body>
+</html>
