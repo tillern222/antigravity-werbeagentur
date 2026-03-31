@@ -121,10 +121,20 @@
         <span class="material-symbols-outlined text-base">bolt</span>
         Leistungen
       </button>
+      <button onclick="loadPage('cases')" id="nav-cases"
+        class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-left hover:bg-gray-50 transition-colors w-full">
+        <span class="material-symbols-outlined text-base">work</span>
+        Cases
+      </button>
       <button onclick="loadPage('ueber-uns')" id="nav-ueber-uns"
         class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-left hover:bg-gray-50 transition-colors w-full">
         <span class="material-symbols-outlined text-base">group</span>
         Über uns
+      </button>
+      <button onclick="loadPage('projekt-starten')" id="nav-projekt-starten"
+        class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-left hover:bg-gray-50 transition-colors w-full">
+        <span class="material-symbols-outlined text-base">rocket_launch</span>
+        Projekt starten
       </button>
     </aside>
 
@@ -145,37 +155,232 @@
 
   var PAGES = {
     landing: {
-      label: 'Startseite',
-      link: 'landing.html',
-      fields: [
-        { key: 'landing_hero_badge',    label: 'Hero Badge Text',  type: 'text' },
-        { key: 'landing_hero_title',    label: 'Hero Titel',       type: 'textarea' },
-        { key: 'landing_hero_subtitle', label: 'Hero Untertitel',  type: 'textarea' },
-        { key: 'landing_hero_image',    label: 'Hero Bild',        type: 'image' },
-        { key: 'landing_cta_title',     label: 'CTA Überschrift',  type: 'textarea' },
-        { key: 'landing_cta_subtitle',  label: 'CTA Untertitel',   type: 'textarea' }
+      label: 'Startseite', link: 'landing.html',
+      groups: [
+        { label: 'Hero', fields: [
+          { key: 'landing_hero_badge',    label: 'Badge Text',      type: 'text' },
+          { key: 'landing_hero_title',    label: 'Titel',           type: 'textarea' },
+          { key: 'landing_hero_subtitle', label: 'Untertitel',      type: 'textarea' },
+          { key: 'landing_hero_image',    label: 'Bild',            type: 'image' }
+        ]},
+        { label: 'Intro', fields: [
+          { key: 'landing_intro_label',   label: 'Label',           type: 'text' },
+          { key: 'landing_intro_title',   label: 'Überschrift',     type: 'textarea' }
+        ]},
+        { label: 'Feature-Bereich', fields: [
+          { key: 'landing_feature_case_image', label: 'Case Bild',  type: 'image' },
+          { key: 'landing_feature_case_label', label: 'Case Label', type: 'text' },
+          { key: 'landing_feature_case_title', label: 'Case Titel', type: 'text' },
+          { key: 'landing_feature_case_text',  label: 'Case Text',  type: 'textarea' },
+          { key: 'landing_feature1_title',     label: 'Feature 1 Titel', type: 'text' },
+          { key: 'landing_feature1_text',      label: 'Feature 1 Text',  type: 'textarea' },
+          { key: 'landing_feature2_title',     label: 'Feature 2 Titel', type: 'text' },
+          { key: 'landing_feature2_text',      label: 'Feature 2 Text',  type: 'textarea' }
+        ]},
+        { label: 'Statistiken', fields: [
+          { key: 'landing_stat1_value', label: 'Stat 1 Zahl',  type: 'text' },
+          { key: 'landing_stat1_label', label: 'Stat 1 Label', type: 'text' },
+          { key: 'landing_stat2_value', label: 'Stat 2 Zahl',  type: 'text' },
+          { key: 'landing_stat2_label', label: 'Stat 2 Label', type: 'text' },
+          { key: 'landing_stat3_title', label: 'Stat 3 Titel', type: 'text' },
+          { key: 'landing_stat3_quote', label: 'Stat 3 Zitat', type: 'text' }
+        ]},
+        { label: 'Leistungen Übersicht', fields: [
+          { key: 'landing_services_title',       label: 'Überschrift',    type: 'text' },
+          { key: 'landing_services_card1_title', label: 'Service 1 Titel', type: 'text' },
+          { key: 'landing_services_card1_text',  label: 'Service 1 Text',  type: 'textarea' },
+          { key: 'landing_services_card2_title', label: 'Service 2 Titel', type: 'text' },
+          { key: 'landing_services_card2_text',  label: 'Service 2 Text',  type: 'textarea' },
+          { key: 'landing_services_card3_title', label: 'Service 3 Titel', type: 'text' },
+          { key: 'landing_services_card3_text',  label: 'Service 3 Text',  type: 'textarea' },
+          { key: 'landing_services_card4_title', label: 'Service 4 Titel', type: 'text' },
+          { key: 'landing_services_card4_text',  label: 'Service 4 Text',  type: 'textarea' },
+          { key: 'landing_services_card5_title', label: 'Service 5 Titel', type: 'text' },
+          { key: 'landing_services_card5_text',  label: 'Service 5 Text',  type: 'textarea' },
+          { key: 'landing_services_card6_title', label: 'Service 6 Titel', type: 'text' },
+          { key: 'landing_services_card6_text',  label: 'Service 6 Text',  type: 'textarea' }
+        ]},
+        { label: 'Testimonial', fields: [
+          { key: 'landing_testimonial_quote', label: 'Zitat',   type: 'textarea' },
+          { key: 'landing_testimonial_image', label: 'Foto',    type: 'image' },
+          { key: 'landing_testimonial_name',  label: 'Name',    type: 'text' },
+          { key: 'landing_testimonial_role',  label: 'Rolle',   type: 'text' }
+        ]},
+        { label: 'Team', fields: [
+          { key: 'landing_team_title',    label: 'Überschrift', type: 'text' },
+          { key: 'landing_team_subtitle', label: 'Untertitel',  type: 'textarea' }
+        ]},
+        { label: 'CTA', fields: [
+          { key: 'landing_cta_title',    label: 'Überschrift', type: 'textarea' },
+          { key: 'landing_cta_subtitle', label: 'Untertitel',  type: 'textarea' }
+        ]}
       ]
     },
     leistungen: {
-      label: 'Leistungen',
-      link: 'leistungen.html',
-      fields: [
-        { key: 'leistungen_hero_title',    label: 'Hero Titel',       type: 'textarea' },
-        { key: 'leistungen_hero_subtitle', label: 'Hero Untertitel',  type: 'textarea' },
-        { key: 'leistungen_hero_image',    label: 'Hero Bild',        type: 'image' },
-        { key: 'leistungen_grid_title',    label: 'Grid Überschrift', type: 'text' },
-        { key: 'leistungen_grid_text',     label: 'Grid Text',        type: 'textarea' }
+      label: 'Leistungen', link: 'leistungen.html',
+      groups: [
+        { label: 'Hero', fields: [
+          { key: 'leistungen_hero_title',    label: 'Titel',      type: 'textarea' },
+          { key: 'leistungen_hero_subtitle', label: 'Untertitel', type: 'textarea' },
+          { key: 'leistungen_hero_image',    label: 'Bild',       type: 'image' }
+        ]},
+        { label: 'Bild-Grid', fields: [
+          { key: 'leistungen_grid_title', label: 'Überschrift', type: 'text' },
+          { key: 'leistungen_grid_text',  label: 'Text',        type: 'textarea' }
+        ]},
+        { label: 'Leistungs-Karten', fields: [
+          { key: 'leistungen_card1_title', label: 'Card 1 Titel', type: 'text' },
+          { key: 'leistungen_card1_text',  label: 'Card 1 Text',  type: 'textarea' },
+          { key: 'leistungen_card2_title', label: 'Card 2 Titel', type: 'text' },
+          { key: 'leistungen_card2_text',  label: 'Card 2 Text',  type: 'textarea' },
+          { key: 'leistungen_card3_title', label: 'Card 3 Titel', type: 'text' },
+          { key: 'leistungen_card3_text',  label: 'Card 3 Text',  type: 'textarea' },
+          { key: 'leistungen_card4_title', label: 'Card 4 Titel', type: 'text' },
+          { key: 'leistungen_card4_text',  label: 'Card 4 Text',  type: 'textarea' },
+          { key: 'leistungen_card5_title', label: 'Card 5 Titel', type: 'text' },
+          { key: 'leistungen_card5_text',  label: 'Card 5 Text',  type: 'textarea' },
+          { key: 'leistungen_card6_title', label: 'Card 6 Titel', type: 'text' },
+          { key: 'leistungen_card6_text',  label: 'Card 6 Text',  type: 'textarea' }
+        ]},
+        { label: 'Prozess', fields: [
+          { key: 'leistungen_prozess1_title', label: 'Schritt 1 Titel', type: 'text' },
+          { key: 'leistungen_prozess1_text',  label: 'Schritt 1 Text',  type: 'textarea' },
+          { key: 'leistungen_prozess2_title', label: 'Schritt 2 Titel', type: 'text' },
+          { key: 'leistungen_prozess2_text',  label: 'Schritt 2 Text',  type: 'textarea' },
+          { key: 'leistungen_prozess3_title', label: 'Schritt 3 Titel', type: 'text' },
+          { key: 'leistungen_prozess3_text',  label: 'Schritt 3 Text',  type: 'textarea' },
+          { key: 'leistungen_prozess4_title', label: 'Schritt 4 Titel', type: 'text' },
+          { key: 'leistungen_prozess4_text',  label: 'Schritt 4 Text',  type: 'textarea' }
+        ]}
+      ]
+    },
+    cases: {
+      label: 'Cases', link: 'cases.html',
+      groups: [
+        { label: 'Hero', fields: [
+          { key: 'cases_hero_title',    label: 'Titel',      type: 'text' },
+          { key: 'cases_hero_subtitle', label: 'Untertitel', type: 'textarea' },
+          { key: 'cases_hero_image',    label: 'Bild',       type: 'image' }
+        ]},
+        { label: 'Featured Case', fields: [
+          { key: 'cases_featured_title', label: 'Titel', type: 'text' },
+          { key: 'cases_featured_text',  label: 'Text',  type: 'textarea' },
+          { key: 'cases_featured_image', label: 'Bild',  type: 'image' }
+        ]},
+        { label: 'Case 1 – Nordhaus', fields: [
+          { key: 'cases_card1_title',       label: 'Titel',    type: 'text' },
+          { key: 'cases_card1_text',        label: 'Text',     type: 'textarea' },
+          { key: 'cases_card1_result_text', label: 'Ergebnis', type: 'text' },
+          { key: 'cases_card1_image',       label: 'Bild',     type: 'image' }
+        ]},
+        { label: 'Case 2 – Pronto', fields: [
+          { key: 'cases_card2_title',       label: 'Titel',    type: 'text' },
+          { key: 'cases_card2_text',        label: 'Text',     type: 'textarea' },
+          { key: 'cases_card2_result_text', label: 'Ergebnis', type: 'text' },
+          { key: 'cases_card2_image',       label: 'Bild',     type: 'image' }
+        ]},
+        { label: 'Case 3 – Kinvara', fields: [
+          { key: 'cases_card3_title',       label: 'Titel',    type: 'text' },
+          { key: 'cases_card3_text',        label: 'Text',     type: 'textarea' },
+          { key: 'cases_card3_result_text', label: 'Ergebnis', type: 'text' },
+          { key: 'cases_card3_image',       label: 'Bild',     type: 'image' }
+        ]},
+        { label: 'Case 4 – Formwerk', fields: [
+          { key: 'cases_card4_title',       label: 'Titel',    type: 'text' },
+          { key: 'cases_card4_text',        label: 'Text',     type: 'textarea' },
+          { key: 'cases_card4_result_text', label: 'Ergebnis', type: 'text' },
+          { key: 'cases_card4_image',       label: 'Bild',     type: 'image' }
+        ]},
+        { label: 'Case 5 – Verde', fields: [
+          { key: 'cases_card5_title',       label: 'Titel',    type: 'text' },
+          { key: 'cases_card5_text',        label: 'Text',     type: 'textarea' },
+          { key: 'cases_card5_result_text', label: 'Ergebnis', type: 'text' },
+          { key: 'cases_card5_image',       label: 'Bild',     type: 'image' }
+        ]},
+        { label: 'Case 6 – Solis', fields: [
+          { key: 'cases_card6_title',       label: 'Titel',    type: 'text' },
+          { key: 'cases_card6_text',        label: 'Text',     type: 'textarea' },
+          { key: 'cases_card6_result_text', label: 'Ergebnis', type: 'text' },
+          { key: 'cases_card6_image',       label: 'Bild',     type: 'image' }
+        ]}
       ]
     },
     'ueber-uns': {
-      label: 'Über uns',
-      link: 'ueber-uns.html',
-      fields: [
-        { key: 'ueberuns_hero_title',    label: 'Hero Titel',      type: 'textarea' },
-        { key: 'ueberuns_hero_subtitle', label: 'Hero Untertitel', type: 'textarea' },
-        { key: 'ueberuns_hero_image',    label: 'Hero Bild',       type: 'image' },
-        { key: 'ueberuns_mission_title', label: 'Mission Titel',   type: 'text' },
-        { key: 'ueberuns_mission_text',  label: 'Mission Text',    type: 'textarea' }
+      label: 'Über uns', link: 'ueber-uns.html',
+      groups: [
+        { label: 'Hero', fields: [
+          { key: 'ueberuns_hero_title',    label: 'Titel',      type: 'textarea' },
+          { key: 'ueberuns_hero_subtitle', label: 'Untertitel', type: 'textarea' },
+          { key: 'ueberuns_hero_image',    label: 'Bild',       type: 'image' }
+        ]},
+        { label: 'Mission', fields: [
+          { key: 'ueberuns_mission_title', label: 'Titel', type: 'text' },
+          { key: 'ueberuns_mission_text',  label: 'Text',  type: 'textarea' }
+        ]},
+        { label: 'Werte', fields: [
+          { key: 'ueberuns_value1_title', label: 'Wert 1 Titel', type: 'text' },
+          { key: 'ueberuns_value1_text',  label: 'Wert 1 Text',  type: 'textarea' },
+          { key: 'ueberuns_value2_title', label: 'Wert 2 Titel', type: 'text' },
+          { key: 'ueberuns_value2_text',  label: 'Wert 2 Text',  type: 'textarea' },
+          { key: 'ueberuns_value3_title', label: 'Wert 3 Titel', type: 'text' },
+          { key: 'ueberuns_value3_text',  label: 'Wert 3 Text',  type: 'textarea' }
+        ]},
+        { label: 'Team', fields: [
+          { key: 'ueberuns_team_title',    label: 'Überschrift', type: 'text' },
+          { key: 'ueberuns_team_subtitle', label: 'Untertitel',  type: 'text' },
+          { key: 'ueberuns_team1_image', label: 'Team 1 Foto',  type: 'image' },
+          { key: 'ueberuns_team1_name',  label: 'Team 1 Name',  type: 'text' },
+          { key: 'ueberuns_team1_role',  label: 'Team 1 Rolle', type: 'text' },
+          { key: 'ueberuns_team2_image', label: 'Team 2 Foto',  type: 'image' },
+          { key: 'ueberuns_team2_name',  label: 'Team 2 Name',  type: 'text' },
+          { key: 'ueberuns_team2_role',  label: 'Team 2 Rolle', type: 'text' },
+          { key: 'ueberuns_team3_image', label: 'Team 3 Foto',  type: 'image' },
+          { key: 'ueberuns_team3_name',  label: 'Team 3 Name',  type: 'text' },
+          { key: 'ueberuns_team3_role',  label: 'Team 3 Rolle', type: 'text' },
+          { key: 'ueberuns_team4_image', label: 'Team 4 Foto',  type: 'image' },
+          { key: 'ueberuns_team4_name',  label: 'Team 4 Name',  type: 'text' },
+          { key: 'ueberuns_team4_role',  label: 'Team 4 Rolle', type: 'text' },
+          { key: 'ueberuns_team5_image', label: 'Team 5 Foto',  type: 'image' },
+          { key: 'ueberuns_team5_name',  label: 'Team 5 Name',  type: 'text' },
+          { key: 'ueberuns_team5_role',  label: 'Team 5 Rolle', type: 'text' },
+          { key: 'ueberuns_team6_image', label: 'Team 6 Foto',  type: 'image' },
+          { key: 'ueberuns_team6_name',  label: 'Team 6 Name',  type: 'text' },
+          { key: 'ueberuns_team6_role',  label: 'Team 6 Rolle', type: 'text' }
+        ]},
+        { label: 'Timeline', fields: [
+          { key: 'ueberuns_timeline1_title', label: 'Station 1 Titel', type: 'text' },
+          { key: 'ueberuns_timeline1_text',  label: 'Station 1 Text',  type: 'textarea' },
+          { key: 'ueberuns_timeline2_title', label: 'Station 2 Titel', type: 'text' },
+          { key: 'ueberuns_timeline2_text',  label: 'Station 2 Text',  type: 'textarea' },
+          { key: 'ueberuns_timeline3_title', label: 'Station 3 Titel', type: 'text' },
+          { key: 'ueberuns_timeline3_text',  label: 'Station 3 Text',  type: 'textarea' },
+          { key: 'ueberuns_timeline4_title', label: 'Station 4 Titel', type: 'text' },
+          { key: 'ueberuns_timeline4_text',  label: 'Station 4 Text',  type: 'textarea' }
+        ]}
+      ]
+    },
+    'projekt-starten': {
+      label: 'Projekt starten', link: 'projekt-starten.html',
+      groups: [
+        { label: 'Hero', fields: [
+          { key: 'projektstarten_hero_title',    label: 'Titel',      type: 'text' },
+          { key: 'projektstarten_hero_subtitle', label: 'Untertitel', type: 'textarea' }
+        ]},
+        { label: 'Prozess-Schritte', fields: [
+          { key: 'projektstarten_step1_title', label: 'Schritt 1 Titel', type: 'text' },
+          { key: 'projektstarten_step1_text',  label: 'Schritt 1 Text',  type: 'textarea' },
+          { key: 'projektstarten_step2_title', label: 'Schritt 2 Titel', type: 'text' },
+          { key: 'projektstarten_step2_text',  label: 'Schritt 2 Text',  type: 'textarea' },
+          { key: 'projektstarten_step3_title', label: 'Schritt 3 Titel', type: 'text' },
+          { key: 'projektstarten_step3_text',  label: 'Schritt 3 Text',  type: 'textarea' },
+          { key: 'projektstarten_step4_title', label: 'Schritt 4 Titel', type: 'text' },
+          { key: 'projektstarten_step4_text',  label: 'Schritt 4 Text',  type: 'textarea' }
+        ]},
+        { label: 'Kontaktdaten', fields: [
+          { key: 'projektstarten_contact_email',   label: 'E-Mail',   type: 'text' },
+          { key: 'projektstarten_contact_phone',   label: 'Telefon',  type: 'text' },
+          { key: 'projektstarten_contact_address', label: 'Adresse',  type: 'text' }
+        ]}
       ]
     }
   };
@@ -270,47 +475,53 @@
       + '<a href="' + page.link + '" target="_blank" class="text-sm text-gray-500 hover:text-gray-800 flex items-center gap-1 border border-gray-200 rounded-xl px-4 py-2.5 hover:bg-gray-50 transition-colors"><span class="material-symbols-outlined text-base">open_in_new</span> Vorschau</a>'
       + '<button onclick="savePage()" class="flex items-center gap-2 bg-yellow-400 text-gray-900 font-bold px-6 py-2.5 rounded-xl hover:bg-yellow-500 transition-colors shadow-sm"><span class="material-symbols-outlined text-base">save</span> Speichern</button>'
       + '</div></div>'
-      + '<div id="save-status" class="hidden mb-6 p-3 rounded-xl text-sm font-medium"></div>'
-      + '<div class="space-y-5">';
+      + '<div id="save-status" class="hidden mb-6 p-3 rounded-xl text-sm font-medium"></div>';
 
-    page.fields.forEach(function(field) {
-      var val = contentMap[field.key] || '';
-      var safeVal = val.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    page.groups.forEach(function(group) {
+      html += '<div class="mb-8">'
+        + '<h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-1">' + group.label + '</h3>'
+        + '<div class="space-y-4">';
 
-      html += '<div class="bg-white rounded-2xl border border-gray-200 p-6">'
-        + '<label class="block text-sm font-semibold text-gray-700 mb-3">' + field.label + '</label>';
+      group.fields.forEach(function(field) {
+        var val = contentMap[field.key] || '';
+        var safeVal = val.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-      if (field.type === 'image') {
-        html += '<div class="flex gap-5 items-start">'
-          + '<img id="preview-' + field.key + '" src="' + (safeVal || 'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild') + '" '
-          + 'class="w-40 h-24 object-cover rounded-xl border border-gray-200 shrink-0" '
-          + 'onerror="this.src=\'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild\'"/>'
-          + '<div class="flex-1 space-y-3">'
-          + '<input type="text" id="field-' + field.key + '" value="' + safeVal + '" '
-          + 'class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400" '
-          + 'placeholder="Bild-URL" '
-          + 'oninput="document.getElementById(\'preview-' + field.key + '\').src=this.value||\'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild\'"/>'
-          + '<label class="flex items-center gap-2 cursor-pointer bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit">'
-          + '<span class="material-symbols-outlined text-base">upload</span> Bild hochladen'
-          + '<input type="file" accept="image/*" class="hidden" onchange="uploadImage(\'' + field.key + '\', this)"/>'
-          + '</label>'
-          + '<span id="upload-status-' + field.key + '" class="text-xs text-gray-400"></span>'
-          + '</div></div>';
-      } else if (field.type === 'textarea') {
-        html += '<textarea id="field-' + field.key + '" rows="3" '
-          + 'class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-y" '
-          + 'placeholder="' + field.label + '">' + safeVal + '</textarea>'
-          + '<p class="text-xs text-gray-400 mt-1">Enter = Zeilenumbruch auf der Website</p>';
-      } else {
-        html += '<input type="text" id="field-' + field.key + '" value="' + safeVal + '" '
-          + 'class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400" '
-          + 'placeholder="' + field.label + '"/>';
-      }
+        html += '<div class="bg-white rounded-2xl border border-gray-200 p-6">'
+          + '<label class="block text-sm font-semibold text-gray-700 mb-3">' + field.label + '</label>';
 
-      html += '</div>';
+        if (field.type === 'image') {
+          html += '<div class="flex gap-5 items-start">'
+            + '<img id="preview-' + field.key + '" src="' + (safeVal || 'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild') + '" '
+            + 'class="w-40 h-24 object-cover rounded-xl border border-gray-200 shrink-0" '
+            + 'onerror="this.src=\'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild\'"/>'
+            + '<div class="flex-1 space-y-3">'
+            + '<input type="text" id="field-' + field.key + '" value="' + safeVal + '" '
+            + 'class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400" '
+            + 'placeholder="Bild-URL" '
+            + 'oninput="document.getElementById(\'preview-' + field.key + '\').src=this.value||\'https://placehold.co/200x120/f3f4f6/9ca3af?text=Kein+Bild\'"/>'
+            + '<label class="flex items-center gap-2 cursor-pointer bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit">'
+            + '<span class="material-symbols-outlined text-base">upload</span> Bild hochladen'
+            + '<input type="file" accept="image/*" class="hidden" onchange="uploadImage(\'' + field.key + '\', this)"/>'
+            + '</label>'
+            + '<span id="upload-status-' + field.key + '" class="text-xs text-gray-400"></span>'
+            + '</div></div>';
+        } else if (field.type === 'textarea') {
+          html += '<textarea id="field-' + field.key + '" rows="3" '
+            + 'class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-y" '
+            + 'placeholder="' + field.label + '">' + safeVal + '</textarea>'
+            + '<p class="text-xs text-gray-400 mt-1">Enter = Zeilenumbruch auf der Website</p>';
+        } else {
+          html += '<input type="text" id="field-' + field.key + '" value="' + safeVal + '" '
+            + 'class="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400" '
+            + 'placeholder="' + field.label + '"/>';
+        }
+
+        html += '</div>';
+      });
+
+      html += '</div></div>';
     });
 
-    html += '</div>';
     editor.innerHTML = html;
   }
 
@@ -321,7 +532,12 @@
     statusEl.textContent = 'Speichern…';
     statusEl.classList.remove('hidden');
 
-    var upserts = page.fields.map(function(field) {
+    var allFields = [];
+    page.groups.forEach(function(group) {
+      group.fields.forEach(function(field) { allFields.push(field); });
+    });
+
+    var upserts = allFields.map(function(field) {
       return {
         content_key: field.key,
         page: currentPage,
